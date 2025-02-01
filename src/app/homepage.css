@@ -1,0 +1,42 @@
+.homepage {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .login-form, .logo-component {
+    width: 50%; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+  }
+  
+  .login-form {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+   
+    
+  }
+  
+  input {
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    color: black;
+  }
+  
+  button {
+    background: blueviolet;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logo-component {
+    font-size: 80px;
+    color: blueviolet;
+  }
+  
