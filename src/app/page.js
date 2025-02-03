@@ -1,15 +1,30 @@
+"use client";
+import { useSession,signOut } from "next-auth/react";
 import "./homepage.css"
 
 export default function Home() {
+  const {data : session} = useSession();
+  console.log(session);
+
+
+
   return (
     <div className="homepage">
-      <div className="logo-component">🛒</div>
-      <div className="login-form">
-        <h2>LOGIN</h2>
-        <input type="email" placeholder="Enter your email" />
-        <input type="password" placeholder="Enter your password" />
-        <button>Submit</button>
-      </div>
+      {session ? (
+        <>
+          <h1>Welcome, {session.user.email}!</h1>
+          {session.user.image && <img src={session.user.image} alt="User Profile" />}
+          <button onClick={()=>signOut()}>Logout</button>
+        
+        
+        </>
+      ):(
+        <a href="/login">Login</a>
+      
+      )}
+      
+      
+      
 
       
       

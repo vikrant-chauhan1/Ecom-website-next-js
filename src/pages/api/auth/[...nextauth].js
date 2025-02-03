@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import Email from "next-auth/providers/email";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
     providers:[
@@ -36,6 +36,7 @@ export const authOptions = {
     },
     callbacks:{
         async jwt({token,user}){
+            
             if(user){
                 token.id = user.id;
                 token.email= user.email;
@@ -50,6 +51,7 @@ export const authOptions = {
             return session;
         },
     },
+    
 };
 
 export default NextAuth(authOptions);
