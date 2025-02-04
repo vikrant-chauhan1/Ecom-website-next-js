@@ -4,22 +4,26 @@ import "./homepage.css"
 
 export default function Home() {
   const {data : session} = useSession();
-  console.log(session);
+  const handleclick= async(e)=>{
+    window.location.href="/products";
+  }
+  
 
 
 
   return (
-    <div className="homepage">
+    <div >
       {session ? (
         <>
-          <h1>Welcome, {session.user.email}!</h1>
+          <h1>Welcome, {session.user.email} !</h1>
           {session.user.image && <img src={session.user.image} alt="User Profile" />}
           <button onClick={()=>signOut()}>Logout</button>
+          <button onClick={handleclick}>Products</button>
         
         
         </>
       ):(
-        <a href="/login">Login</a>
+        <a href="/login">Login </a>
       
       )}
       

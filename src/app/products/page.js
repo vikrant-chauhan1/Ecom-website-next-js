@@ -1,28 +1,39 @@
 "use client";
-import { useSession } from "next-auth/react";
 
-export default function ProductsPage(){
-    const {data : session,status}= useSession();
+import {useEffect,useState} from "react";
 
-    if (status==="loading"){
-        return(
-            <div>Loading...</div>
-        );
-    }
-    if(!session){
-        return(
-            <div>
-                <h1>You must be logged in to view this content.</h1>
-                <a href="/login">Go to Login</a>
-            </div>
-        );
-    }
+export default function ProductListing(){
+    const [products,setproducts] = useState([]);
+
+    useEffect(()=>{
+        async function fetchProducts() {
+            const res = await fetch("https://fakestoreapi.com/products");
+            const data = await res.json();
+            setproducts(data);
+
+        }
+        fetchProducts();
+    },[]);
+
     return(
         <div>
-            <h1>Product List</h1>
-            <p>Welcome, {session.user.email}!</p>
+            <h1>Product Listing</h1>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"20px"}}>
+                {products.map((product)=>(
+                    <div key={product.id} style={{border:"1px solid #ddd",padding:"10px"}}>
+                        <img src={product.image} alt={product.title} width="100" height="100px" />
+                        <h3>{product.title}</h3>
+                        <p>$ {product.price}</p>
+                        
+                    </div>
+                    
+    
+                ))}
+    
+            </div>
         </div>
     );
 }
+
 
 

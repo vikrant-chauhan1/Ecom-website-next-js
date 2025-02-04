@@ -27,7 +27,7 @@ export const authOptions = {
         })
     ],
     session :{
-        stratergy:"jwt",
+        strategy:"jwt",
         maxAge:60*60*3, // session expires in 3 hours
         /* updateAge:60*60 session will be refreshed every one hour to see if the user is active and increase the age plus one hour  */
     },
