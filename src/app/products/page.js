@@ -1,7 +1,7 @@
 "use client";
 
 import {useEffect,useState} from "react";
-
+import Link from "next/link";
 export default function ProductListing(){
     const [products,setproducts] = useState([]);
 
@@ -24,6 +24,12 @@ export default function ProductListing(){
                         <img src={product.image} alt={product.title} width="100" height="100px" />
                         <h3>{product.title}</h3>
                         <p>$ {product.price}</p>
+                        <Link href={`/products/${product.id}`}>
+                            <button>View Details</button>
+                        
+                        
+                        </Link>
+                       
                         
                     </div>
                     
